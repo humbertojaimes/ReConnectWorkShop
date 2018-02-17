@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FacesApp"
+             x:Class="FacesApp.MainPage">
+
+    <StackLayout>
+        <Label Text="Nombre de la foto" />
+        <Entry x:Name="entImageName" />
+        <Button Clicked="BtnTakePhoto_Clicked"  Text="Capturar foto"/>
+        <Image x:Name="imgPhoto" HorizontalOptions="Center" HeightRequest="200" WidthRequest="200" Aspect="AspectFill"/>
+        <ListView x:Name="lvPersons">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image HeightRequest="70" WidthRequest="70" Aspect="AspectFill" Source="{Binding ImageUri}" />
+                           
+                            <Label Text="{Binding Age}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
