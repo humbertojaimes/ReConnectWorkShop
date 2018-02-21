@@ -20,7 +20,7 @@ namespace FacesApp
 
         private async void BtnTakePhoto_Clicked(object sender, EventArgs e)
         {
-       ;
+       
             string name = entImageName.Text;
 
             Photo photo = await MediaHelper.TakePhotoAsync(name);

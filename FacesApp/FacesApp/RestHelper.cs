@@ -24,7 +24,7 @@ namespace FacesApp
         {
             public string ImageFile { get; set; }
 
-            public Uri ImageUri { get => new Uri("https://reconnecthjrstorage.blob.core.windows.net/faces/"+ImageFile); }
+            public Uri ImageUri { get => new Uri("https://TuBlob.blob.core.windows.net/faces/"+ImageFile); }
 
             public int Age { get; set; }
 

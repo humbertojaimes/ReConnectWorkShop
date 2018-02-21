@@ -1,9 +1,7 @@
 ﻿using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FacesApp
@@ -38,7 +36,7 @@ namespace FacesApp
 
         private static CloudBlobContainer GetContainer()
         {
-            var account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=reconnecthjrstorage;AccountKey=mSU5mc/ir1gm83ju0+n/dYihQPjiWxh5Kpr36ha4smLUelcshBLKJGI4HxbXqYGctFT4eBOa5uZXfaWlds/P9A==");
+            var account = CloudStorageAccount.Parse("Tu cadena de conexión");
 
             var client = account.CreateCloudBlobClient();
             var containers = client.ListContainersSegmentedAsync(null).Result;
