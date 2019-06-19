@@ -228,17 +228,20 @@ Los datos de esta nueva función son los siguientes.
 ```
 #r "Microsoft.WindowsAzure.Storage"
 
-using System.Net;
 using Microsoft.WindowsAzure.Storage.Table;
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 
-public static HttpResponseMessage Run(HttpRequestMessage req, IQueryable<Person> inTable, TraceWriter log)
+public static IActionResult  Run(HttpRequestMessage req, CloudTable inTable, TraceWriter log)
 {
-    var query = from person in inTable select person;
-    foreach (Person person in query)
+    var querySegment = inTable.ExecuteQuerySegmentedAsync(new TableQuery<Person>(), null);
+    foreach (Person person in querySegment.Result)
     {
-        log.Info($"Name:{person.ImageFile}");
+        log.Info($"Name:{person.ImageFile}"); 
     }
-    return req.CreateResponse(HttpStatusCode.OK, inTable.ToList());
+
+   return (ActionResult)new OkObjectResult(querySegment.Result); 
 }
 
 public class Person : TableEntity
